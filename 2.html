@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷雨阳同学升学宴邀请函</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background-color: #f9f9f7;
+            color: #333;
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* 粒子背景效果 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* 主容器 */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* 顶部横幅 */
+        .header {
+            background: linear-gradient(rgba(10, 34, 57, 0.9), rgba(10, 34, 57, 0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="%23D4AF37" stroke-width="0.5" opacity="0.2"/></svg>');
+            background-size: cover;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,30 Q50,10 70,30 T90,50 Q70,70 50,90 T10,50 Q30,30 50,10 Z" fill="none" stroke="%23D4AF37" stroke-width="0.3" opacity="0.1"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .main-title {
+            font-family: "SimSun", serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #D4AF37;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sub-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+        
+        .en-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+        
+        .divider {
+            width: 150px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            margin: 20px auto;
+            transition: all 0.3s ease;
+        }
+        
+        .divider:hover {
+            background: linear-gradient(90deg, transparent, #F0D175, transparent);
+            box-shadow: 0 0 10px rgba(244, 211, 94, 0.5);
+        }
+        
+        /* 主要内容区 */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: white;
+            padding: 40px;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .photo-section {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .photo-frame {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 5px solid #D4AF37;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .photo-frame::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed #D4AF37;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: rotate 60s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .student-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: #ddd;
+            /* 替换为实际照片URL */
+            background-image: url("E:/111.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .decorations {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .decoration-star {
+            position: absolute;
+            color: #D4AF37;
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+        
+        .text-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .invitation-text {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 2;
+            margin-bottom: 30px;
+        }
+        
+        .highlight {
+            color: #D4AF37;
+            font-weight: bold;
+        }
+        
+        /* 底部功能区 */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+        }
+        
+        .contact-info {
+            margin: 20px 0;
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .footer-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23D4AF37"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23D4AF37"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23D4AF37"></path></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        /* 音乐播放器 */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(10, 34, 57, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .music-player:hover {
+            background: rgba(10, 34, 57, 0.9);
+        }
+        
+        .music-icon {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .en-title {
+                font-size: 1.5rem;
+            }
+            
+            .content {
+                flex-direction: column;
+            }
+            
+            .photo-section {
+                order: -1;
+                margin-bottom: 30px;
+            }
+            
+            .photo-frame {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <canvas class="particles" id="particles"></canvas>
+    
+    <div class="container">
+        <!-- 顶部横幅 -->
+        <header class="header">
+            <h1 class="main-title">金榜题名 前程似锦</h1>
+            <h2 class="en-title">Celebration of Achievement</h2>
+            <p class="sub-title">诚挚邀请您参加雷雨阳同学的升学宴</p>
+            <div class="divider"></div>
+        </header>
+        
+        <!-- 主要内容区 -->
+        <main class="content">
+            <div class="photo-section">
+                <div class="photo-frame">
+                    <div class="student-photo"></div>
+                    <div class="decorations" id="decorations"></div>
+                </div>
+            </div>
+            
+            <div class="text-section">
+                <div class="invitation-text">
+                    <p>尊敬的<span class="highlight">[宾客姓名]</span>：</p>
+                    <p>谨定于<span class="highlight">2025年8月9日（星期六）18:00</span></p>
+                    <p>在<span class="highlight">[酒店名称·宴会厅]</span>（地址：XX市XX区XX路XX号）</p>
+                    <p>为小儿<span class="highlight">（雷雨阳）</span>（录取院校：<span class="highlight">铜陵学院遥感科学与技术专业</span>）举办升学宴。</p>
+                    <p>诚邀您拨冗莅临，见证成长，共享喜悦。</p>
+                </div>
+            </div>
+        </main>
+        
+        <!-- 底部功能区 -->
+        <footer class="footer">
+            <div class="contact-info">
+                如有疑问，请联系：<span class="highlight">[父母姓名]</span> 电话/微信 <span class="highlight">XXX-XXXX-XXXX</span>
+            </div>
+            <div class="footer-decoration"></div>
+        </footer>
+    </div>
+    
+    <!-- 音乐播放器 - 初始状态为播放 -->
+    <div class="music-player" id="musicPlayer">
+        <span class="music-icon">🎵</span>
+        <span>关闭音乐</span>
+    </div>
+    
+    <!-- 音频元素 -->
+    <audio id="bgMusic" loop>
+        <source src="D:/music/其他/奔跑-黄征，羽泉.mp3" type="audio/mpeg">
+        <!-- 替换为实际音乐URL -->
+    </audio>
+    
+    <script>
+        // 创建装饰星星
+        function createDecorations() {
+            const container = document.getElementById('decorations');
+            const positions = [
+                { top: '10%', left: '20%' },
+                { top: '5%', left: '50%' },
+                { top: '15%', left: '80%' },
+                { top: '30%', left: '10%' },
+                { top: '40%', left: '90%' },
+                { top: '60%', left: '5%' },
+                { top: '70%', left: '85%' },
+                { top: '85%', left: '30%' },
+                { top: '90%', left: '60%' }
+            ];
+            
+            positions.forEach(pos => {
+                const star = document.createElement('div');
+                star.className = 'decoration-star';
+                star.innerHTML = '✧';
+                star.style.top = pos.top;
+                star.style.left = pos.left;
+                container.appendChild(star);
+                
+                // 添加轻微动画
+                star.style.animation = `twinkle ${2 + Math.random() * 3}s infinite alternate`;
+            });
+            
+            // 添加CSS动画
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes twinkle {
+                    from { opacity: 0.3; transform: scale(0.8); }
+                    to { opacity: 0.9; transform: scale(1.2); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // 粒子背景效果
+        function initParticles() {
+            const canvas = document.getElementById('particles');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const particles = [];
+            const particleCount = Math.floor(window.innerWidth / 10);
+            
+            // 创建粒子
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 0.5,
+                    speed: Math.random() * 0.5 + 0.1,
+                    opacity: Math.random() * 0.5 + 0.1,
+                    angle: Math.random() * Math.PI * 2
+                });
+            }
+            
+            // 动画循环
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(212, 175, 55, ${particle.opacity})`;
+                    ctx.fill();
+                    
+                    // 更新位置
+                    particle.x += Math.cos(particle.angle) * particle.speed;
+                    particle.y += Math.sin(particle.angle) * particle.speed;
+                    
+                    // 边界检查
+                    if (particle.x < 0 || particle.x > canvas.width || 
+                        particle.y < 0 || particle.y > canvas.height) {
+                        particle.x = Math.random() * canvas.width;
+                        particle.y = Math.random() * canvas.height;
+                        particle.angle = Math.random() * Math.PI * 2;
+                    }
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+            
+            // 窗口大小调整
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+        
+        // 音乐播放器
+        function setupMusicPlayer() {
+            const player = document.getElementById('musicPlayer');
+            const audio = document.getElementById('bgMusic');
+            let isPlaying = true;
+            
+            // 尝试自动播放（需要用户交互后才能真正播放）
+            function attemptAutoPlay() {
+                const promise = audio.play();
+                
+                if (promise !== undefined) {
+                    promise.catch(error => {
+                        // 自动播放被阻止，显示播放按钮
+                        player.innerHTML = '<span class="music-icon">🎵</span><span>播放音乐</span>';
+                        isPlaying = false;
+                    });
+                }
+            }
+            
+            // 初始尝试自动播放
+            attemptAutoPlay();
+            
+            // 点击事件
+            player.addEventListener('click', () => {
+                if (isPlaying) {
+                    audio.pause();
+                    player.innerHTML = '<span class="music-icon">🎵</span><span>播放音乐</span>';
+                } else {
+                    audio.play();
+                    player.innerHTML = '<span class="music-icon">🎵</span><span>关闭音乐</span>';
+                }
+                
+                isPlaying = !isPlaying;
+            });
+            
+            // 用户首次交互后尝试播放（解决浏览器自动播放限制）
+            document.body.addEventListener('click', function firstInteraction() {
+                attemptAutoPlay();
+                document.body.removeEventListener('click', firstInteraction);
+            }, { once: true });
+        }
+        
+        // 页面加载完成后初始化
+        window.addEventListener('DOMContentLoaded', () => {
+            createDecorations();
+            initParticles();
+            setupMusicPlayer();
+        });
+    </script>
+</body>
+</html>
